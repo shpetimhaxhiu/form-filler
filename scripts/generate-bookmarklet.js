@@ -13,8 +13,7 @@ const path = require('path');
 
 // File paths
 const minifiedFilePath = path.join(__dirname, '../dist/bookmarklet.min.js');
-const originalFilePath = path.join(__dirname, '../bookmarklet.js');
-const indexFilePath = path.join(__dirname, '../index.html');
+const originalFilePath = path.join(__dirname, '../src/bookmarklet.js');
 const outputFilePath = path.join(__dirname, '../dist/bookmarklet-link.js');
 
 // Generate the bookmarklet

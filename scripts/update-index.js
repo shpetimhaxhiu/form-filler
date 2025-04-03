@@ -11,16 +11,35 @@ const fs = require('fs');
 const path = require('path');
 
 // File paths
-const indexFilePath = path.join(__dirname, '../index.html');
-const originalFilePath = path.join(__dirname, '../bookmarklet.js');
-const minifiedFilePath = path.join(__dirname, '../dist/bookmarklet-link.js');
+const distIndexFilePath = path.join(__dirname, '../dist/index.html');
+const bookmarkletFilePath = path.join(__dirname, '../dist/bookmarklet-link.js');
 
-// We don't need to update the index.html anymore as we're using client-side JavaScript
-// to load the bookmarklets.
 function updateIndexHtml() {
   try {
-    console.log('✅ Using client-side script to load bookmarklets in index.html');
-    console.log('✅ No server-side update needed!');
+    if (!fs.existsSync(distIndexFilePath)) {
+      console.error('❌ Error: dist/index.html file not found. Make sure webpack has run.');
+      process.exit(1);
+    }
+
+    if (!fs.existsSync(bookmarkletFilePath)) {
+      console.error('❌ Error: dist/bookmarklet-link.js file not found. Make sure generate-bookmarklet.js has run.');
+      process.exit(1);
+    }
+
+    // Read the index.html file and the bookmarklet file
+    let indexHtml = fs.readFileSync(distIndexFilePath, 'utf8');
+    const bookmarklet = fs.readFileSync(bookmarkletFilePath, 'utf8');
+
+    // Update the bookmarklet links
+    indexHtml = indexHtml.replace(
+      /href="javascript:void\(0\);"\s+class="bookmarklet"\s+id="bookmarklet-minified"/g,
+      `href="${bookmarklet}" class="bookmarklet" id="bookmarklet-minified"`
+    );
+
+    // Write the updated index.html file
+    fs.writeFileSync(distIndexFilePath, indexHtml);
+    
+    console.log('✅ index.html updated with bookmarklet links!');
   } catch (error) {
     console.error('❌ Error:', error);
     process.exit(1);

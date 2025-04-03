@@ -21,7 +21,7 @@ A JavaScript bookmarklet that uses OpenAI's GPT-4o-mini to automatically generat
 
 ## Installation
 
-1. Open the [demo page](index.html)
+1. Open the [demo page](https://shpetimhaxhiu.github.io/form-filler/)
 2. Drag the "Form Autofill" link to your bookmarks bar
 3. Click the bookmark when you're on a website with forms
 
@@ -29,6 +29,58 @@ A JavaScript bookmarklet that uses OpenAI's GPT-4o-mini to automatically generat
 
 - An OpenAI API key
 - A modern web browser with JavaScript enabled
+
+## Development Setup
+
+This project uses modern JavaScript tooling:
+
+```bash
+# Install dependencies
+npm install
+
+# Start development server
+npm start
+
+# Build for production
+npm run build
+
+# Run tests
+npm test
+
+# Lint code
+npm run lint
+
+# Format code
+npm run format
+```
+
+## Technologies Used
+
+- Webpack 5 for bundling
+- Babel for JavaScript transpilation
+- ESLint and Prettier for code quality
+- Jest for testing
+- Modern ES6+ JavaScript
+- CSS modules for styling
+
+## Project Structure
+
+```
+├── dist/                # Built files
+├── src/                 # Source files
+│   ├── css/             # CSS styles
+│   ├── js/              # JavaScript modules
+│   ├── bookmarklet.js   # Main bookmarklet code
+│   └── index.html       # Demo page
+├── scripts/             # Build scripts
+├── __mocks__/           # Jest mocks
+├── .babelrc             # Babel configuration
+├── .eslintrc.js         # ESLint configuration
+├── .prettierrc.js       # Prettier configuration
+├── jest.config.js       # Jest configuration
+├── webpack.config.js    # Webpack configuration
+└── package.json         # Project metadata and dependencies
+```
 
 ## Security Notice
 
