@@ -275,8 +275,19 @@
 
     <!-- Load the bookmarklet scripts -->
     <script>
+      // Get the base URL for the current environment
+      const getBaseUrl = () => {
+        // Check if we're on GitHub Pages
+        if (window.location.hostname.includes('github.io')) {
+          return '/form-filler/';
+        }
+        return '/';
+      };
+
+      const baseUrl = getBaseUrl();
+
       // Fetch the bookmarklet files
-      fetch("bookmarklet.js")
+      fetch(`${baseUrl}bookmarklet.js`)
         .then((response) => response.text())
         .then((code) => {
           const bookmarklet = `javascript:${code.replace(/\n/g, "")}`;
@@ -286,7 +297,7 @@
           console.error("Error loading full bookmarklet:", error)
         );
 
-      fetch("dist/bookmarklet.min.js")
+      fetch(`${baseUrl}bookmarklet.min.js`)
         .then((response) => response.text())
         .then((code) => {
           const bookmarklet = `javascript:${code.replace(/\n/g, "")}`;

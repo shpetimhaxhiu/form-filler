@@ -8,6 +8,19 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
+const fs = require('fs');
+
+// Create .nojekyll file if it doesn't exist
+const createNojekyllFile = () => {
+  const nojekyllPath = path.join(__dirname, 'src', '.nojekyll');
+  if (!fs.existsSync(nojekyllPath)) {
+    fs.writeFileSync(nojekyllPath, '');
+    console.log('Created .nojekyll file');
+  }
+};
+
+// Create .nojekyll file
+createNojekyllFile();
 
 module.exports = (env, argv) => {
   const isProduction = argv.mode === 'production';
@@ -17,6 +30,7 @@ module.exports = (env, argv) => {
     output: {
       filename: isProduction ? 'bookmarklet.min.js' : 'bookmarklet.js',
       path: path.resolve(__dirname, 'dist'),
+      publicPath: isProduction ? '/form-filler/' : '/',
       clean: true,
     },
     devServer: {
@@ -56,6 +70,11 @@ module.exports = (env, argv) => {
             from: 'assets', 
             to: 'assets',
             noErrorOnMissing: true
+          },
+          {
+            from: 'src/.nojekyll',
+            toType: 'file',
+            to: '.nojekyll'
           }
         ],
       }),

@@ -54,6 +54,20 @@ npm run lint
 npm run format
 ```
 
+## GitHub Pages Deployment
+
+To deploy the project to GitHub Pages:
+
+```bash
+# Build for GitHub Pages
+npm run build:gh-pages
+
+# Deploy to GitHub Pages
+npm run deploy
+```
+
+This will deploy the project to `https://yourusername.github.io/form-filler/`.
+
 ## Technologies Used
 
 - Webpack 5 for bundling
