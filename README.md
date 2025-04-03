@@ -91,10 +91,11 @@ npm run format
 ## Author
 
 Created by [Shpetim Haxhiu](https://pito.dev)
+
 - GitHub: [shpetimhaxhiu](https://github.com/shpetimhaxhiu)
 - Twitter: [@CrazieCoder](https://twitter.com/CrazieCoder)
 - Email: shpetim.h@gmail.com
 
 ## License
 
-MIT License 
+MIT License
