@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Autofill Bookmarklet</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1>Form Autofill Bookmarklet</h1>
+
+    <div class="instructions">
+      <h2>How to Use</h2>
+      <ol>
+        <li>
+          Drag one of the following bookmarklets to your bookmarks bar:
+          <div class="options">
+            <!-- The bookmarklet links will be replaced by scripts/update-index.js -->
+            <a
+              href="javascript:void(0);"
+              class="bookmarklet"
+              id="bookmarklet-full"
+              >Form Autofill (Full)</a
+            >
+            <a
+              href="javascript:void(0);"
+              class="bookmarklet"
+              id="bookmarklet-minified"
+              >Form Autofill (Minified)</a
+            >
+          </div>
+          <p class="note">
+            Note: The minified version works exactly the same but has a smaller
+            file size.
+          </p>
+        </li>
+        <li>Visit any website with forms</li>
+        <li>Click the bookmarklet in your bookmarks bar</li>
+        <li>Click on the form you want to autofill</li>
+        <li>Click again to confirm your selection</li>
+        <li>Enter your OpenAI API key when prompted</li>
+        <li>
+          Wait for the AI to generate and fill in the form with realistic sample
+          data
+        </li>
+      </ol>
+    </div>
+
+    <h2>Try it on this sample form</h2>
+    <div class="sample-form">
+      <form id="sample-form">
+        <div>
+          <label for="fullName">Full Name</label>
+          <input
+            type="text"
+            id="fullName"
+            name="fullName"
+            placeholder="Enter your full name"
+          />
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Enter your email"
+          />
+        </div>
+        <div>
+          <label for="phone">Phone Number</label>
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            placeholder="Enter your phone number"
+          />
+        </div>
+        <div>
+          <label for="dob">Date of Birth</label>
+          <input type="date" id="dob" name="dob" />
+        </div>
+        <div>
+          <label for="address">Address</label>
+          <textarea
+            id="address"
+            name="address"
+            placeholder="Enter your address"
+            rows="3"
+          ></textarea>
+        </div>
+        <div>
+          <label for="country">Country</label>
+          <select id="country" name="country">
+            <option value="">Select your country</option>
+            <option value="usa">United States</option>
+            <option value="canada">Canada</option>
+            <option value="uk">United Kingdom</option>
+            <option value="australia">Australia</option>
+            <option value="germany">Germany</option>
+            <option value="france">France</option>
+            <option value="japan">Japan</option>
+          </select>
+        </div>
+        <div>
+          <p>Gender</p>
+          <input type="radio" id="male" name="gender" value="male" />
+          <label for="male">Male</label>
+          <input type="radio" id="female" name="gender" value="female" />
+          <label for="female">Female</label>
+          <input type="radio" id="other" name="gender" value="other" />
+          <label for="other">Other</label>
+        </div>
+        <div>
+          <input type="checkbox" id="subscribe" name="subscribe" />
+          <label for="subscribe">Subscribe to newsletter</label>
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+
+    <div class="footer">
+      <p>
+        Created by <a href="https://pito.dev" target="_blank">Shpetim Haxhiu</a>
+      </p>
+      <p>
+        GitHub:
+        <a href="https://github.com/shpetimhaxhiu" target="_blank"
+          >shpetimhaxhiu</a
+        >
+        | Twitter:
+        <a href="https://twitter.com/CrazieCoder" target="_blank"
+          >@CrazieCoder</a
+        >
+      </p>
+      <p>
+        <a
+          href="https://github.com/shpetimhaxhiu/form-autofill-bookmarklet"
+          target="_blank"
+          >View project on GitHub</a
+        >
+      </p>
+    </div>
+
+    <!-- Load the bookmarklet scripts -->
+    <script>
+      // Fetch the bookmarklet files
+      fetch("bookmarklet.js")
+        .then((response) => response.text())
+        .then((code) => {
+          const bookmarklet = `javascript:${code.replace(/\n/g, "")}`;
+          document.getElementById("bookmarklet-full").href = bookmarklet;
+        })
+        .catch((error) =>
+          console.error("Error loading full bookmarklet:", error)
+        );
+
+      fetch("dist/bookmarklet.min.js")
+        .then((response) => response.text())
+        .then((code) => {
+          const bookmarklet = `javascript:${code.replace(/\n/g, "")}`;
+          document.getElementById("bookmarklet-minified").href = bookmarklet;
+        })
+        .catch((error) =>
+          console.error("Error loading minified bookmarklet:", error)
+        );
+    </script>
+  </body>
+</html>

@@ -1,0 +1,40 @@
+{
+  "name": "form-filler",
+  "version": "1.0.0",
+  "description": "A JavaScript bookmarklet that uses OpenAI's GPT-4o-mini to automatically generate realistic sample data for any web form.",
+  "main": "bookmarklet.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "terser bookmarklet.js -o dist/bookmarklet.min.js --compress --mangle",
+    "build:bookmarklet": "node scripts/generate-bookmarklet.js",
+    "update-index": "node scripts/update-index.js",
+    "dev": "http-server -o",
+    "clean": "rimraf dist",
+    "make-dist": "mkdir dist",
+    "prebuild": "npm run clean && npm run make-dist",
+    "postbuild": "npm run build:bookmarklet && npm run update-index"
+  },
+  "keywords": [
+    "bookmarklet",
+    "form-filler",
+    "openai",
+    "gpt",
+    "javascript",
+    "automation"
+  ],
+  "author": {
+    "name": "Shpetim Haxhiu",
+    "email": "shpetim.h@gmail.com",
+    "url": "https://pito.dev"
+  },
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shpetimhaxhiu/form-filler"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1",
+    "rimraf": "^5.0.5",
+    "terser": "^5.28.1"
+  }
+}
