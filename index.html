@@ -9,142 +9,269 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css"
+    />
+    <style>
+      .bookmarklet {
+        padding: 8px 15px;
+        background-color: #0d6efd;
+        color: white;
+        text-decoration: none;
+        border-radius: 4px;
+        margin-right: 10px;
+        display: inline-block;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        font-weight: 500;
+      }
+      .bookmarklet:hover {
+        background-color: #0b5ed7;
+        color: white;
+      }
+    </style>
   </head>
-  <body>
-    <h1>Form Autofill Bookmarklet</h1>
+  <body class="bg-light">
+    <div class="container py-5">
+      <header class="text-center mb-5">
+        <h1 class="display-4 fw-bold text-primary">
+          Form Autofill Bookmarklet
+        </h1>
+        <p class="lead text-muted">
+          Automatically fill forms with realistic data using AI
+        </p>
+      </header>
 
-    <div class="instructions">
-      <h2>How to Use</h2>
-      <ol>
-        <li>
-          Drag one of the following bookmarklets to your bookmarks bar:
-          <div class="options">
-            <!-- The bookmarklet links will be replaced by scripts/update-index.js -->
-            <a
-              href="javascript:void(0);"
-              class="bookmarklet"
-              id="bookmarklet-full"
-              >Form Autofill (Full)</a
-            >
-            <a
-              href="javascript:void(0);"
-              class="bookmarklet"
-              id="bookmarklet-minified"
-              >Form Autofill (Minified)</a
-            >
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="card shadow-sm mb-5">
+            <div class="card-header bg-primary text-white">
+              <h2 class="h4 mb-0">
+                <i class="bi bi-info-circle me-2"></i>How to Use
+              </h2>
+            </div>
+            <div class="card-body">
+              <ol class="list-group list-group-numbered mb-0">
+                <li class="list-group-item d-flex align-items-start">
+                  <div class="ms-2">
+                    <div>
+                      Drag one of the following bookmarklets to your bookmarks
+                      bar:
+                    </div>
+                    <div class="mt-2 mb-2">
+                      <!-- The bookmarklet links will be replaced by scripts/update-index.js -->
+                      <a
+                        href="javascript:void(0);"
+                        class="bookmarklet"
+                        id="bookmarklet-full"
+                        >Form Autofill (Full)</a
+                      >
+                      <a
+                        href="javascript:void(0);"
+                        class="bookmarklet"
+                        id="bookmarklet-minified"
+                        >Form Autofill (Minified)</a
+                      >
+                    </div>
+                    <div class="alert alert-info">
+                      <small
+                        ><i class="bi bi-exclamation-circle me-1"></i>The
+                        minified version works exactly the same but has a
+                        smaller file size.</small
+                      >
+                    </div>
+                  </div>
+                </li>
+                <li class="list-group-item">Visit any website with forms</li>
+                <li class="list-group-item">
+                  Click the bookmarklet in your bookmarks bar
+                </li>
+                <li class="list-group-item">
+                  Click on the form you want to autofill
+                </li>
+                <li class="list-group-item">
+                  Click again to confirm your selection
+                </li>
+                <li class="list-group-item">
+                  Enter your OpenAI API key when prompted
+                </li>
+                <li class="list-group-item">
+                  Wait for the AI to generate and fill in the form with
+                  realistic sample data
+                </li>
+              </ol>
+            </div>
           </div>
-          <p class="note">
-            Note: The minified version works exactly the same but has a smaller
-            file size.
-          </p>
-        </li>
-        <li>Visit any website with forms</li>
-        <li>Click the bookmarklet in your bookmarks bar</li>
-        <li>Click on the form you want to autofill</li>
-        <li>Click again to confirm your selection</li>
-        <li>Enter your OpenAI API key when prompted</li>
-        <li>
-          Wait for the AI to generate and fill in the form with realistic sample
-          data
-        </li>
-      </ol>
+
+          <div class="card shadow-sm mb-5">
+            <div class="card-header bg-success text-white">
+              <h2 class="h4 mb-0">
+                <i class="bi bi-check-circle me-2"></i>Try it on this sample
+                form
+              </h2>
+            </div>
+            <div class="card-body">
+              <form id="sample-form" class="needs-validation" novalidate>
+                <div class="mb-3">
+                  <label for="fullName" class="form-label">Full Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="fullName"
+                    name="fullName"
+                    placeholder="Enter your full name"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="email"
+                    name="email"
+                    placeholder="Enter your email"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="phone" class="form-label">Phone Number</label>
+                  <input
+                    type="tel"
+                    class="form-control"
+                    id="phone"
+                    name="phone"
+                    placeholder="Enter your phone number"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="dob" class="form-label">Date of Birth</label>
+                  <input type="date" class="form-control" id="dob" name="dob" />
+                </div>
+                <div class="mb-3">
+                  <label for="address" class="form-label">Address</label>
+                  <textarea
+                    class="form-control"
+                    id="address"
+                    name="address"
+                    placeholder="Enter your address"
+                    rows="3"
+                  ></textarea>
+                </div>
+                <div class="mb-3">
+                  <label for="country" class="form-label">Country</label>
+                  <select class="form-select" id="country" name="country">
+                    <option value="">Select your country</option>
+                    <option value="usa">United States</option>
+                    <option value="canada">Canada</option>
+                    <option value="uk">United Kingdom</option>
+                    <option value="australia">Australia</option>
+                    <option value="germany">Germany</option>
+                    <option value="france">France</option>
+                    <option value="japan">Japan</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Gender</label>
+                  <div>
+                    <div class="form-check form-check-inline">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        id="male"
+                        name="gender"
+                        value="male"
+                      />
+                      <label class="form-check-label" for="male">Male</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        id="female"
+                        name="gender"
+                        value="female"
+                      />
+                      <label class="form-check-label" for="female"
+                        >Female</label
+                      >
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        id="other"
+                        name="gender"
+                        value="other"
+                      />
+                      <label class="form-check-label" for="other">Other</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="mb-4">
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="subscribe"
+                      name="subscribe"
+                    />
+                    <label class="form-check-label" for="subscribe"
+                      >Subscribe to newsletter</label
+                    >
+                  </div>
+                </div>
+                <div class="d-grid">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer class="mt-5 pt-4 border-top text-center">
+        <div class="row">
+          <div class="col-md-12">
+            <p>
+              Created by
+              <a href="https://pito.dev" target="_blank" class="link-primary"
+                >Shpetim Haxhiu</a
+              >
+            </p>
+            <p class="text-muted">
+              <a
+                href="https://github.com/shpetimhaxhiu"
+                target="_blank"
+                class="link-secondary"
+              >
+                <i class="bi bi-github me-1"></i>shpetimhaxhiu
+              </a>
+              <span class="mx-2">|</span>
+              <a
+                href="https://twitter.com/CrazieCoder"
+                target="_blank"
+                class="link-secondary"
+              >
+                <i class="bi bi-twitter me-1"></i>@CrazieCoder
+              </a>
+            </p>
+            <p>
+              <a
+                href="https://github.com/shpetimhaxhiu/form-autofill-bookmarklet"
+                target="_blank"
+                class="btn btn-sm btn-outline-secondary"
+              >
+                <i class="bi bi-code-slash me-1"></i>View project on GitHub
+              </a>
+            </p>
+          </div>
+        </div>
+      </footer>
     </div>
 
-    <h2>Try it on this sample form</h2>
-    <div class="sample-form">
-      <form id="sample-form">
-        <div>
-          <label for="fullName">Full Name</label>
-          <input
-            type="text"
-            id="fullName"
-            name="fullName"
-            placeholder="Enter your full name"
-          />
-        </div>
-        <div>
-          <label for="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            placeholder="Enter your email"
-          />
-        </div>
-        <div>
-          <label for="phone">Phone Number</label>
-          <input
-            type="tel"
-            id="phone"
-            name="phone"
-            placeholder="Enter your phone number"
-          />
-        </div>
-        <div>
-          <label for="dob">Date of Birth</label>
-          <input type="date" id="dob" name="dob" />
-        </div>
-        <div>
-          <label for="address">Address</label>
-          <textarea
-            id="address"
-            name="address"
-            placeholder="Enter your address"
-            rows="3"
-          ></textarea>
-        </div>
-        <div>
-          <label for="country">Country</label>
-          <select id="country" name="country">
-            <option value="">Select your country</option>
-            <option value="usa">United States</option>
-            <option value="canada">Canada</option>
-            <option value="uk">United Kingdom</option>
-            <option value="australia">Australia</option>
-            <option value="germany">Germany</option>
-            <option value="france">France</option>
-            <option value="japan">Japan</option>
-          </select>
-        </div>
-        <div>
-          <p>Gender</p>
-          <input type="radio" id="male" name="gender" value="male" />
-          <label for="male">Male</label>
-          <input type="radio" id="female" name="gender" value="female" />
-          <label for="female">Female</label>
-          <input type="radio" id="other" name="gender" value="other" />
-          <label for="other">Other</label>
-        </div>
-        <div>
-          <input type="checkbox" id="subscribe" name="subscribe" />
-          <label for="subscribe">Subscribe to newsletter</label>
-        </div>
-        <button type="submit">Submit</button>
-      </form>
-    </div>
-
-    <div class="footer">
-      <p>
-        Created by <a href="https://pito.dev" target="_blank">Shpetim Haxhiu</a>
-      </p>
-      <p>
-        GitHub:
-        <a href="https://github.com/shpetimhaxhiu" target="_blank"
-          >shpetimhaxhiu</a
-        >
-        | Twitter:
-        <a href="https://twitter.com/CrazieCoder" target="_blank"
-          >@CrazieCoder</a
-        >
-      </p>
-      <p>
-        <a
-          href="https://github.com/shpetimhaxhiu/form-autofill-bookmarklet"
-          target="_blank"
-          >View project on GitHub</a
-        >
-      </p>
-    </div>
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Load the bookmarklet scripts -->
     <script>

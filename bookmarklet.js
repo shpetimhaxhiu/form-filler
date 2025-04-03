@@ -180,12 +180,29 @@ javascript: (function () {
    */
   function safeDispatchEvent(element, eventName) {
     try {
-      // Check if the element has a dispatchEvent method
-      if (element && typeof element.dispatchEvent === 'function') {
+      // Check if the element is null or undefined
+      if (!element) {
+        return;
+      }
+
+      // Handle case where element might be a collection (NodeList or array)
+      if (element.length !== undefined && typeof element !== "string") {
+        // If element is a collection, iterate through items
+        for (let i = 0; i < element.length; i++) {
+          if (element[i] && typeof element[i].dispatchEvent === "function") {
+            element[i].dispatchEvent(new Event(eventName, { bubbles: true }));
+          }
+        }
+      } else if (typeof element.dispatchEvent === "function") {
+        // Single element case
         element.dispatchEvent(new Event(eventName, { bubbles: true }));
       }
     } catch (error) {
-      console.warn(`Could not dispatch ${eventName} event on element:`, element, error);
+      console.warn(
+        `Could not dispatch ${eventName} event on element:`,
+        element,
+        error
+      );
     }
   }
 
@@ -237,8 +254,8 @@ javascript: (function () {
           }
 
           // Trigger events to ensure form validation and reactive frameworks update
-          safeDispatchEvent(element, 'input');
-          safeDispatchEvent(element, 'change');
+          safeDispatchEvent(element, "input");
+          safeDispatchEvent(element, "change");
         }
       }
     }
@@ -262,6 +279,9 @@ javascript: (function () {
       document.removeEventListener("click", handleClick, true);
       sendToOpenAI(getFormStructure(selectedForm), selectedForm);
       selectedForm = null;
+
+      // Remove the overlay
+      removeOverlay();
       return;
     }
 
